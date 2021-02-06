@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { inject, observer, Provider } from 'mobx-react';
@@ -37,11 +37,13 @@ const BilegoAdminApp = withRouter(inject('securityStore')(observer(props => {
   const { securityStore: {user, token}, history } = props;
   const routs = routes(user && user.nicename ? user.nicename : '');
 
-  !user || !token
-    ? history.push(`/login`)
-    : history.location.pathname.indexOf('/login') + 1
-    ? history.push(`/${user.nicename}`)
-    : null;
+  useCallback(() => {
+    !user || !token
+      ? history.push(`/login`)
+      : history.location.pathname.indexOf('/login') + 1
+      ? history.push(`/${user.nicename}`)
+      : null;
+  }, [user, token, history])
 
   return (
     <ThemeProvider theme={theme}>

@@ -83,7 +83,7 @@ const OrderDetails = observer(props => {
       render: data => {
         return data.map((el, k)=>(
           <Paragraph key={k}>
-            {el.name}<span className={classes.dot}/> <Text type="secondary">/</Text> {el.quantity}<span/>{el.price}p
+            {el.name} <span className={classes.dot}/> <Text type="secondary">/</Text> {el.quantity} <Text type="secondary">/</Text> {el.price}p
           </Paragraph>
         ))
       },
