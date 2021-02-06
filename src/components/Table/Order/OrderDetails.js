@@ -1,24 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Table, Badge, Typography, Tooltip } from 'antd';
-import { createStyles, makeStyles } from '@material-ui/styles';
 import { round } from '../../functions';
 
 const { Paragraph, Text } = Typography;
-const useStyles = makeStyles(theme =>
-  createStyles({
-    dot: {
-      '&::before': {
-        content: "•",
-        display: 'inline-block',
-        margin: theme.spacing(0, 1),
-      },
-    },
-  }),
-);
 
 const OrderDetails = observer(props => {
-  const classes = useStyles();
   const { orders } = props;
 
   const data = [];
@@ -83,7 +70,7 @@ const OrderDetails = observer(props => {
       render: data => {
         return data.map((el, k)=>(
           <Paragraph key={k}>
-            {el.name} <span className={classes.dot}/> <Text type="secondary">/</Text> {el.quantity} <Text type="secondary">/</Text> {el.price}p
+            {el.name} <Text type="secondary">/</Text> {el.quantity} <Text type="secondary">/</Text> {el.price}p
           </Paragraph>
         ))
       },

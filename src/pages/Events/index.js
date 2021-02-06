@@ -323,7 +323,7 @@ const Events = inject('eventsStore', 'securityStore')(observer(props => {
           : `События с ${moment().format(format)}-bilego`
   };
   const xlsxFileData = () => {
-    const { response } = props.eventsStore.response;
+    const { response } = props.eventsStore;
 
     return response.map(event => ({
       'ID события': event.id,
