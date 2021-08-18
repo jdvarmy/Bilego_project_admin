@@ -61,6 +61,7 @@ const Events = inject('eventsStore', 'securityStore')(observer(props => {
     title: null,
     link: null,
     visible: null,
+    content: null,
   });
   const searchInput = useRef(null);
   const f = 'DD.MM.YYYY';
@@ -290,8 +291,21 @@ const Events = inject('eventsStore', 'securityStore')(observer(props => {
               () => setModal({
                   title: `Iframe для продажи билетов события ${data.event}`,
                   link: data.ticketLink,
-                  visible: true
+                  visible: true,
+                  content: <>
+                    <Typography>Скопируйте ссылку ниже и вставьте в любое место Вашего сайта:</Typography>
+                    <Input.TextArea rows={3} className={classes.textarea} value={`<iframe src="${data.ticketLink}" width="100%" height="645px"></iframe>`} />
+                    </>
                 })}>Сформировать Iframe билетов</Menu.Item>
+            <Menu.Item key="3" onClick={() => setModal({
+              title: ``,
+              link: null,
+              visible: true,
+              content: <>
+                <Typography>Скопируйте ссылку ниже:</Typography>
+                <Input.TextArea rows={3} className={classes.textarea} value={`${data.eventLink}`} />
+              </>
+            })}>Сформировать ссылку на событие</Menu.Item>
           </Menu>
         );
         return (
@@ -405,10 +419,9 @@ const Events = inject('eventsStore', 'securityStore')(observer(props => {
         title={modal.title}
         visible={modal.visible}
         footer={null}
-        onCancel={() => setModal({title: null, link: null, visible: null})}
+        onCancel={() => setModal({title: null, link: null, visible: null, content: null})}
       >
-        <Typography>Скопируйте ссылку ниже и вставьте в любое место Вашего сайта:</Typography>
-        <Input.TextArea className={classes.textarea} value={'<iframe src="' + modal.link + '" width="100%" height="645px"></iframe>'} />
+        {modal.content}
       </Modal>
     </div>
   )

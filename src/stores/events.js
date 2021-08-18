@@ -92,6 +92,7 @@ class Events{
         return {
           key: event.id,
           event: event.title,
+          eventLink: `https://bilego.ru/spb/event/${event.name}`,
           date: event.date2,
           totalCur: event.total_cur,
           totalQuantity: event.total_quantity,

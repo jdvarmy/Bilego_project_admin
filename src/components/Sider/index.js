@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { inject, observer } from 'mobx-react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
-import { RiseOutlined, PieChartOutlined } from '@ant-design/icons';
+import { RiseOutlined } from '@ant-design/icons';
 import { createStyles, makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) =>
@@ -37,12 +37,12 @@ const Sider = withRouter(inject( 'securityStore')(observer(props => {
             <span>События</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="orders">
-          <NavLink to={`/${baseNameForRouting}/orders`} exact>
-            <PieChartOutlined/>
-            <span>Заказы</span>
-          </NavLink>
-        </Menu.Item>
+        {/*<Menu.Item key="orders">*/}
+        {/*  <NavLink to={`/${baseNameForRouting}/orders`} exact>*/}
+        {/*    <PieChartOutlined/>*/}
+        {/*    <span>Заказы</span>*/}
+        {/*  </NavLink>*/}
+        {/*</Menu.Item>*/}
       </Menu>
     </Layout.Sider>
   )
