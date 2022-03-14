@@ -24,6 +24,7 @@ class Events{
   isLoading = false;
   events = false;
   response = false;
+  email = false;
 
   sortOrder = {columnKey: 'id', order: 'ascend'};
   pagination = {current: 1, pageSize: 20, total: 1};
@@ -37,7 +38,7 @@ class Events{
 
   setFilter = (filters) => {
     this.filters = { ...this.filters, ...filters };
-    this.getEventsOfUser();
+    this.getEventsOfUser(this.email);
   };
 
   clearFilters = () => {
@@ -48,7 +49,7 @@ class Events{
       all: false,
     };
     this.cache = {};
-    this.getEventsOfUser();
+    this.getEventsOfUser(this.email);
   };
 
   initState = () => {
@@ -57,8 +58,9 @@ class Events{
     this.isLoading = false;
   };
 
-  *getEventsOfUser() {
+  *getEventsOfUser(email) {
     this.isLoading = true;
+    this.email = email;
     try {
       let response;
       const key = this.getKey();
@@ -82,11 +84,11 @@ class Events{
             startDate: startDate ? startDate.format('DD-MM-YYYY') : undefined,
             endDate: endDate ? endDate.format('DD-MM-YYYY') : undefined,
             all: all,
+            email
           }
         );
         this.searchCache.set(key, response)
       }
-
       this.response = response;
       this.events = response.map(event => {
         return {

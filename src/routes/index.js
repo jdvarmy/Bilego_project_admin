@@ -2,7 +2,7 @@ import {
   LoginPage,
   EventsPage,
   EventPage,
-  OrdersPage,
+  // OrdersPage,
   Page404
 } from '../pages';
 
@@ -22,12 +22,12 @@ export default function (baseRouter) {
         component: EventsPage,
         exact: true,
       },
-      {
-        path: `/${baseRouter}/orders`,
-        key: 'OrdersPage',
-        component: OrdersPage,
-        exact: true,
-      },
+      // {
+      //   path: `/${baseRouter}/orders`,
+      //   key: 'OrdersPage',
+      //   component: OrdersPage,
+      //   exact: true,
+      // },
       {
         path: `/${baseRouter}/event/:eventSlug`,
         key: 'event',

@@ -11,6 +11,7 @@ const handleErrors = () => {
 };
 
 const handleCatch = (url, err) => {
+  console.log(err);
   if(err.status >= 400 && err.status < 500) {
     console.log('!!!!!!!!!session error!!!!!!!!!!');
     tokenService.clear();
@@ -27,6 +28,7 @@ const tokenPlugin = request => {
   const token = tokenService.get();
   if(token)
     request.set('Authorization', `Bearer ${token}`);
+    // request.set('Access-Control-Allow-Origin', `*`);
   // request.set('X-Requested-With', 'XMLHttpRequest');
   // request.set('X-NX-Origin', 'SG');
 

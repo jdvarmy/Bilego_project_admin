@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Menu, Dropdown, Button } from 'antd';
 import { createStyles, makeStyles } from '@material-ui/styles';
-import { RiseOutlined, PieChartOutlined } from '@ant-design/icons';
+import { RiseOutlined } from '@ant-design/icons';
 import logo from './Bilego-logo_inverted.png';
 
 const useStyles = makeStyles((theme) =>
@@ -53,12 +53,12 @@ const Header = withRouter(inject('securityStore')(observer(props => {
         </NavLink>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="orders">
-        <NavLink className={classes.link} to={`/${baseNameForRouting}/orders`} exact>
-          <PieChartOutlined/>
-          <span>Заказы</span>
-        </NavLink>
-      </Menu.Item>
+      {/*<Menu.Item key="orders">*/}
+      {/*  <NavLink className={classes.link} to={`/${baseNameForRouting}/orders`} exact>*/}
+      {/*    <PieChartOutlined/>*/}
+      {/*    <span>Заказы</span>*/}
+      {/*  </NavLink>*/}
+      {/*</Menu.Item>*/}
     </Menu>
   );
 
